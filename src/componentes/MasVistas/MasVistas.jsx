@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+
 import { Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
-import "../MasVistas/MasVistasElements.css"
+/* import "../MasVistas/MasVistasElements.css" */
 
 function MasVistas() {
+  
+   
   return (
     
     <>
@@ -15,10 +18,10 @@ function MasVistas() {
         <h1>Mas Vistas</h1>
       {/* <Row xs={1} md={4} className="g-4"  > */}
       {/* <Row className="justify-content-md-center"> */}
-      <Row >
-        {Array.from({ length: 4 }).map((_, idx) => (
-          <Col /* xs={1} md={4} lg={4} xl={6} */ lg={true}>
-            <Card>
+      <Row className="g-4">
+        {Array.from({ length: 14 }).map((_, idx) => (
+           <Col xs lg={true}>
+             <Card bg="secondary" style={{maxWidth:"170px"}}>
               <Card.Img variant="top" src="https://i.blogs.es/dd7dab/matrix/450_1000.jpg"/>
               <Card.Body>
                 <Card.Title>Matrix Resurrections 2021</Card.Title>
@@ -28,6 +31,7 @@ function MasVistas() {
         ))}
       </Row>
       </Container>
+     
     </>
   );
 }
