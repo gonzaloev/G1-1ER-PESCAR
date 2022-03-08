@@ -1,0 +1,7 @@
+.bgText{
+    color: white;
+    background-color: rgba(94, 94, 121, 0.2);
+}
+.bgText>strong{
+    background-color: rgba(94, 94, 121, 0.2);
+}
