@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import { OverlayTrigger } from "react-bootstrap";
 import { Popover } from "react-bootstrap";
 import './MejorRankeadas.css'
+import Movies from "../ApiPeliculas/Movies";
 
 function MejorRankeadas() {
   return (
