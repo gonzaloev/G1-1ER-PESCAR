@@ -6,23 +6,30 @@ import Col from "react-bootstrap/Col";
 import { OverlayTrigger } from "react-bootstrap";
 import { Popover } from "react-bootstrap";
 import './MejorRankeadas.css'
-import Movies from "../ApiPeliculas/Movies";
 
-function MejorRankeadas() {
+const MejorRankeadas = (props) =>{
+
+  
+  
+    const { repos } = props;
+    if (!repos ||  repos.length === 0) return <p>No hay pelis, intentar de otra forma.</p>
+  
   return (
     <>
-      {/* A todo esto habria que hacer un script para que busque y mapee dentro de la card con cada pelicula diferente */}
+      {/* FALTA CAMBIAR TODO ESTE COMPONENTE, IGNORAR POR EL MOMENTO */}
+      {repos.results.map((repo) => 
       <Container className="mx-auto my-5 " fluid="md">
         <h1>Mejor Rankeadas </h1>
+        <div key={repo.id}>
         <Row className="g-4">
           {Array.from({ length: 21 }).map((_, idx) => (
             <Col xs lg={true}>
-              {["right"].map((placement) => (
+              {["right"].map((repo) => (
                 <OverlayTrigger
-                  key={placement}
-                  placement={placement}
+                  key={repo}
+                  placement={repo}
                   overlay={
-                    <Popover id={`popover-positioned-${placement}`} >
+                    <Popover id={`popover-positioned-${repo}`} >
                       <Popover.Header as="h3" style={{ color:'black', backgroundColor: 'rgba(52, 52, 52, 0.0)'  }}>{`Matrix Revolutions 2021 `}</Popover.Header>
                       <Popover.Body 
                         style={{
@@ -37,11 +44,14 @@ function MejorRankeadas() {
                         }}
                       >
                         <div  className="bgText" >
-                          <strong>Descripcion: </strong> Matrix.
+                          <span><strong>Descripcion: </strong> {repo.id}.</span>
                           <br></br>
-                          <strong >Directores: </strong> Hermanas Wachowski.
+                          <span><strong>Descripcion: </strong> {repo.title}.</span>
+                          <span><strong>Descripcion: </strong> {repo.description}.</span>
                           <br></br>
-                          <strong >Actores: </strong> Keanu Reeves, la que hace de Trinity, el que hace del Grone, y los otros.
+                          <span><strong >Directores: </strong> {repo.directors}</span>
+                          <br></br>
+                          <span><strong >Actores: </strong> {repo.actors}</span>
                         </div>
                       </Popover.Body>
                     </Popover>
@@ -61,9 +71,11 @@ function MejorRankeadas() {
             </Col>
           ))}
         </Row>
+        </div>
       </Container>
+      )}
     </>
   );
 }
 
-export default MejorRankeadas;
+export default MejorRankeadas

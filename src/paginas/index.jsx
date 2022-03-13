@@ -4,7 +4,8 @@ import MasVistas from '../componentes/MasVistas/MasVistas';
 import Logo from '../componentes/Logo/Logo';
 import MejorRankeadas from '../componentes/MejorRankeadas/MejorRankeadas';
 import NavigationBar from '../componentes/navBar/navigationBar';
-import Movies from '../componentes/ApiPeliculas/Movies'
+import CargarApi from '../componentes/ApiPeliculas/CargarApi';
+import TestApiList from './testApi';
 
 
 
@@ -16,8 +17,10 @@ function Home() {
         <Logo/>
         <MasVistas/>
         <MejorRankeadas/>
-        <Footer/>
-        <Movies/>
+        {/* <Movies/> */}
+        <CargarApi/>
+        <TestApiList/> 
+        {/* <Footer/> */}
     </>
   )
 }
