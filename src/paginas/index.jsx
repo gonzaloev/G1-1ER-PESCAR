@@ -20,7 +20,7 @@ function Home() {
         {/* <Movies/> */}
         <CargarApi/>
         <TestApiList/> 
-        {/* <Footer/> */}
+        <Footer/>
     </>
   )
 }
