@@ -1,83 +1,57 @@
 import React from "react";
-import { 
+import {
   Container,
   Row,
   Col,
-  ListGroup,
-  Card,
   Button,
-  div
 } from "react-bootstrap";
 import { alignPropType } from "react-bootstrap/esm/types";
-import './footer.css'
+import './footer.css' 
+
+
+
+{/* 
 import Logo1 from "../../componentes/Footer/tecnologias/csslogo.png"
-import Logo2 from "../../componentes/Footer/tecnologias/nodejslogo.png"
+import Logo2 from "../../componentes/Footer/tecnologias/nodejslogo.png" */}
 /* import Container from "react-bootstrap" */
 
 const Footer = () => {
-return (
-
-  <div className="footerdiv">
-
-	<Container className="footercontainer">
-        
-        
-    <Row className="footerrow">
-      
-      <blockquote className="blockquote mb-0">
-        <p>{' '}Si quieres quitar el hambre a un hombre dale un pez. Pero si quieres que no vuelva a tener hambre, enséñale a Pescar.{' '}</p>
-        <p className="blockquote-footer">Fundación Pescar / <cite title="Source Title">Lao Tsé</cite></p>
-      </blockquote>
-    </Row>
-
-<Row>
-{/* 
+  return (
 
 
-<Col>
-<Button className="ButtonLink1" variant="link">Sobre Nosotros
-  <img src={Logo1} alt="logo css" style={
-    {
-      maxWidth:'80px'
-    }
-  }/>
 
-  <img src={Logo2} alt="logo nodejs" style={
-    {
-      maxWidth:'80px'
-    }}
-    />
-</Button>
-</Col>
+      <Container style={{color:'white'}}
+      className="footerdiv" variant="light" bg="dark">
 
-  */}
 
-<Col>
-<Row>
-<Button className="ButtonLink" variant="link">Sobre Nosotros</Button>
+        <Row>
 
-</Row>
-</Col>
 
-<Col>
-{/* <Button className="ButtonLink1" variant="link">Sobre Nosotros</Button> */}
-<Button className="ButtonLink" variant="link">Tecnologías usadas</Button>
-</Col>
+          <Col>
+            <Row>
+              <Button className="ButtonLink" variant="link">Sobre Nosotros</Button>
 
-<Col>
-<Button className="ButtonLink" variant="link">Patrocinadores</Button>
-</Col>
+            </Row>
+          </Col>
 
-</Row>
-{/* infinite Logo Carouselhttps://jsfiddle.net/solodev/f6obs8mx/ */}
+          <Col>
+            {/* <Button className="ButtonLink1" variant="link">Sobre Nosotros</Button> */}
+            <Button className="ButtonLink" variant="link">Tecnologías usadas</Button>
+          </Col>
 
-<Row>
-  <p className="footerp">Página desarrollada por Luciana Carolina Paredes, Gonzalo Valiño, Axel Roldan y Lucas Gabriel Velasco.</p>
-</Row>
+          <Col>
+            <Button className="ButtonLink" variant="link">Patrocinadores</Button>
+          </Col>
 
-	</Container>
-  </div>
-);
+        </Row>
+
+        <Row>
+          <p className="footerp">Página desarrollada por Luciana Carolina Paredes, Gonzalo Valiño, Axel Roldan y Lucas Gabriel Velasco.</p>
+        </Row>
+
+      </Container>
+
+  );
 };
 export default Footer;
 
@@ -130,7 +104,7 @@ export default Footer;
         </Row>
 */}
 
-    {/*  linea divisoria
+{/*  linea divisoria
     
 
 

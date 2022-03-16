@@ -7,7 +7,7 @@ class CargarApi extends React.Component {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "movies-app1.p.rapidapi.com",
-            "x-rapidapi-key": "d6a7128958msh6dc9a6abe0a6f58p1f8e67jsn85420cef0d4e"
+            "x-rapidapi-key": "32d6f1946emshd01b80456f42b38p1566bdjsn6a1d1e0303cc"
         }
     })
       .then((response) => response.json())
