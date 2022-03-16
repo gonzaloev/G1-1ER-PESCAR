@@ -7,17 +7,17 @@ import NavigationBar from '../componentes/navBar/navigationBar';
 import CargarApi from '../componentes/ApiPeliculas/CargarApi';
 import TestApiList from './testApi';
 
-
+import { Link } from "react-router-dom";
 
 function Home() {
 
   return (
     <>
+     
         <NavigationBar/>
         <Logo/>
-        <MasVistas/>
-        <MejorRankeadas/>
-        {/* <Movies/> */}
+        {/* <MasVistas/>  */}
+        {/* <MejorRankeadas/> */}
         <CargarApi/>
         <TestApiList/> 
         <Footer/>

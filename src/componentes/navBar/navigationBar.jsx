@@ -8,6 +8,14 @@ import { Form } from "react-bootstrap";
 import { FormControl } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import Dropdown from 'react-bootstrap/Dropdown'
+import Home from "../../paginas";
+import Peliculas from "../../paginas/Peliculas/Peliculas";
+import Series from "../../paginas/Series/Series"
+
+import {Link} from "react-router-dom";
+
+
+
 //import logo from "../../imgs/logo.png";
 
 function NavigationBar() {
@@ -22,7 +30,7 @@ function NavigationBar() {
       >
         <Container>
           <Navbar.Brand
-            href="#home"
+            href={{Home}}
             className="fw-bold"
             
             style={{ color: "#FFD369" }}
@@ -32,8 +40,8 @@ function NavigationBar() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Películas</Nav.Link>
-              <Nav.Link href="#link">Series</Nav.Link>
+              <Nav.Link >Películas</Nav.Link>
+              <Nav.Link >Series</Nav.Link>
               <NavDropdown
                 title="Género"
                 id="basic-nav-dropdown"
