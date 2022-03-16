@@ -6,9 +6,6 @@ import MejorRankeadas from '../componentes/MejorRankeadas/MejorRankeadas';
 import NavigationBar from '../componentes/navBar/navigationBar';
 import CargarApi from '../componentes/ApiPeliculas/CargarApi';
 import TestApiList from './testApi';
-
-import { Link } from "react-router-dom";
-
 function Home() {
 
   return (

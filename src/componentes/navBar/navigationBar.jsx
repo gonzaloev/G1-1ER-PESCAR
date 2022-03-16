@@ -9,12 +9,6 @@ import { FormControl } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import Dropdown from 'react-bootstrap/Dropdown'
 import Home from "../../paginas";
-import Peliculas from "../../paginas/Peliculas/Peliculas";
-import Series from "../../paginas/Series/Series"
-
-import {Link} from "react-router-dom";
-
-
 
 //import logo from "../../imgs/logo.png";
 
