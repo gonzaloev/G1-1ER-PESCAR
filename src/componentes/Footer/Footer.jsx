@@ -6,19 +6,19 @@ import {
   ListGroup  
 } from "react-bootstrap";
 
-
 /* import Container from "react-bootstrap" */
 
 const Footer = () => {
 return (
-	<Container>
-    <Row>
+	<Container style={{backgroundColor:'white'}} bg="primary">
+    <div style={{backgroundColor:'white'}}>
+    <Row >
       <h2>Footer MK1</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, numquam excepturi. Cum sint, voluptas autem impedit doloribus facilis? Voluptatum itaque blanditiis explicabo a aut. Aliquam dolore earum doloribus non dolorum optio cupiditate. Eos ex sit dicta quasi tempora voluptas doloremque illum consequuntur porro beatae odio, ab impedit, fugiat eaque minus adipisci!</p>
       
-    </Row>
+    </Row >
     <Row>
-      <Col>Acerca de Nosotros
+      <Col >Acerca de Nosotros
       <ul>
         <li href="#">1</li>
         <li>2</li>
@@ -50,6 +50,7 @@ return (
         </ListGroup>
       </Col>
     </Row>
+    </div>
 	</Container>
 );
 };

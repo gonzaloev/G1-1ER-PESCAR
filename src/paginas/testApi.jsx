@@ -2,10 +2,12 @@ import React, {useEffect, useState}from 'react'
 import List from '../componentes/ApiPeliculas/List'
 import MasVistas from '../componentes/MasVistas/MasVistas';
 import CargandoLista from '../componentes/ApiPeliculas/CargandoLista'
+import MejorRankeadas from '../componentes/MejorRankeadas/MejorRankeadas';
 
 function TestApiList() {
     /* Pasamos por parametro el componente que queremos pasarle la data */
     const ListLoading = CargandoLista(MasVistas);
+    const ListLoading1 = CargandoLista(MejorRankeadas);
     //const ListLoading = (List);
     const [appState, setAppState] = useState({
         loading: false,
@@ -20,7 +22,7 @@ function TestApiList() {
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "movies-app1.p.rapidapi.com",
-                "x-rapidapi-key": "d6a7128958msh6dc9a6abe0a6f58p1f8e67jsn85420cef0d4e"
+                "x-rapidapi-key": "32d6f1946emshd01b80456f42b38p1566bdjsn6a1d1e0303cc"
             }
         })
             .then((res) => res.json())
@@ -34,6 +36,7 @@ function TestApiList() {
         <div>
             
                 <ListLoading isLoading={appState.loading} repos={appState.repos}/>
+                <ListLoading1 isLoading={appState.loading} repos={appState.repos}/>
 
         </div>
   );
