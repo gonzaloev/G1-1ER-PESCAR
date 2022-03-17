@@ -1,17 +1,12 @@
 import React, {useEffect, useState}from 'react'
-import List from '../componentes/ApiPeliculas/List'
 import MasVistas from '../componentes/MasVistas/MasVistas';
-import CargandoLista from '../componentes/ApiPeliculas/CargandoLista'
 import MejorRankeadas from '../componentes/MejorRankeadas/MejorRankeadas';
 
 function TestApiList() {
-    /* Pasamos por parametro el componente que queremos pasarle la data */
-    const ListLoading = CargandoLista(MasVistas);
-    const ListLoading1 = CargandoLista(MejorRankeadas);
-    //const ListLoading = (List);
+
     const [appState, setAppState] = useState({
-        loading: false,
-        repos: null,
+        loading: false, // Le asignamos el estado falso como inicial
+        repos: null,    // Lo iniciamos en null para compararlo mas adelante en un condicional
     });
 
     useEffect(() => {
@@ -22,24 +17,20 @@ function TestApiList() {
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "movies-app1.p.rapidapi.com",
-                "x-rapidapi-key": "32d6f1946emshd01b80456f42b38p1566bdjsn6a1d1e0303cc"
+                "x-rapidapi-key": "32d6f1946emshd01b80456f42b38p1566bdjsn6a1d1e0303cc" // aca pasamos la key, si no no funciona la api
             }
         })
-            .then((res) => res.json())
-        
+            .then((res) => res.json()) // devolvemos el JSON
             .then((repos) =>{
-                setAppState({loading: false, repos: repos});
+                setAppState({loading: false, repos: repos}); //Usamos setAppState para cambiar el valor de repos que antes valia null
             });
     }, [setAppState]);
 
     return (
         <div>
-            
-                <ListLoading isLoading={appState.loading} repos={appState.repos}/>
-                <ListLoading1 isLoading={appState.loading} repos={appState.repos}/>
-
+            <MejorRankeadas repos={appState.repos}/> {/* Retornamos el componente mejor ranqueadas y le pasamos por parametro la api*/}
+            <MasVistas repos={appState.repos}/>      {/* Retornamos el componente mas vistas y le pasamos por parametro la api*/}
         </div>
   );
 }
-
 export default TestApiList;

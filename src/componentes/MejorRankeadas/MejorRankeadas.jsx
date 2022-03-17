@@ -10,11 +10,7 @@ import "./MejorRankeadas.css";
 const MejorRankeadas = (props) => {
   const { repos } = props;
 
-  if (!repos || repos.length === 0) return <p></p>;
-
-
-  
-  
+  if (!repos || repos.length === 0) return <p>no se logro cargar la pelicula</p>;
 
   return (
     <>
