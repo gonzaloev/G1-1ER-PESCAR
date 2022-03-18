@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/* $(document).ready(function() {
     $('.logo-carousel').slick({
       slidesToShow: 6,
       slidesToScroll: 1,
@@ -20,4 +20,4 @@ $(document).ready(function() {
       }]
     });
   });
-  
+   */

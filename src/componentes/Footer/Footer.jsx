@@ -4,9 +4,11 @@ import {
   Row,
   Col,
   Button,
+  Carousel,
 } from "react-bootstrap";
 import { alignPropType } from "react-bootstrap/esm/types";
 import './footer.css' 
+
 
 
 
@@ -18,6 +20,8 @@ import Logo2 from "../../componentes/Footer/tecnologias/nodejslogo.png" */}
 const Footer = () => {
   return (
 
+/* container -- row -- col */
+<>
 
 
       <Container style={{color:'white'}}
@@ -50,7 +54,9 @@ const Footer = () => {
         </Row>
 
       </Container>
-
+      
+    <Carousel/>
+    </>
   );
 };
 export default Footer;
