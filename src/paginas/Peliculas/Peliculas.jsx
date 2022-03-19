@@ -2,6 +2,7 @@ import React from "react";
 import NavigationBar from "../../componentes/navBar/navigationBar";
 
 function Peliculas() {
+
   return (
     <div style={{ backgroundColor: "red" }}>
       <NavigationBar/>
