@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
@@ -16,7 +15,7 @@ const MasVistas = (props) => {
   return (
     <ul>
       <h1>Más Vistas</h1>
-      <Container className="mx-auto my-5 ">
+      <Container className="mx-auto my-5 letra">
         <Row className="g-4">
           {repos.results.map((repo) => {
             return (

@@ -21,13 +21,12 @@ function NavigationBar() {
   return (
     <>
       <Navbar
-        fixed="top"
         bg="dark"
         variant="dark"
         expand="lg"
         style={{ backgroundColor: "#FFD369" }}
       >
-        <Container>
+        <Container style = {{marginBottom:'60px'}}>
           <Navbar.Brand
             as={Link} 
             to="/"

@@ -5,9 +5,9 @@ import Home from './paginas';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Peliculas from './paginas/Peliculas/Peliculas'
 import Series from './paginas/Series/Series'
+import SobreNosotros from './paginas/sobreNosotros'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 
 function App() {
   return (
@@ -17,8 +17,9 @@ function App() {
       {/* <Home/> */}
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/Peliculas' element={<Peliculas/>}/>
-          <Route path='/Series' element={<Series/>}/>
+          <Route path='/peliculas' element={<Peliculas/>}/>
+          <Route path='/series' element={<Series/>}/>
+          <Route path='/sobreNosotros' element={<SobreNosotros/>}/>
         </Routes>
       </BrowserRouter>
 

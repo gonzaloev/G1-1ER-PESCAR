@@ -5,17 +5,16 @@ import {
   Col,
   ListGroup  
 } from "react-bootstrap";
-
+import "./FooterStyles.css"
 /* import Container from "react-bootstrap" */
 
 const Footer = () => {
 return (
-	<Container style={{backgroundColor:'white'}} bg="primary">
-    <div style={{backgroundColor:'white'}}>
+	<Container className="letra" bg="primary">
+    <div >
     <Row >
       <h2>Footer MK1</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, numquam excepturi. Cum sint, voluptas autem impedit doloribus facilis? Voluptatum itaque blanditiis explicabo a aut. Aliquam dolore earum doloribus non dolorum optio cupiditate. Eos ex sit dicta quasi tempora voluptas doloremque illum consequuntur porro beatae odio, ab impedit, fugiat eaque minus adipisci!</p>
-      
     </Row >
     <Row>
       <Col >Acerca de Nosotros
