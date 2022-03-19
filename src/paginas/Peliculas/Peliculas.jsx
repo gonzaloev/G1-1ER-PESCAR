@@ -2,20 +2,24 @@ import React, { useEffect, useState } from 'react'
 import NavigationBar from "../../componentes/navBar/navigationBar";
 import Footer from "../../componentes/Footer/Footer";
 import { Row, Container, Col } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
+import { useParams } from "react-router-dom"
 import "./PeliculasStyle.css";
+import Card from "react-bootstrap/Card";
 
 const Peliculas = () => {
 
+  const { id } = useParams()
+
+
   const [appState, setAppState] = useState({
-    loading: false, // Le asignamos el estado falso como inicial
-    repos: null,    // Lo iniciamos en null para compararlo mas adelante en un condicional
+    loading: true, // Le asignamos el estado falso como inicial
+    repos: undefined,    // Lo iniciamos en null para compararlo mas adelante en un condicional
   });
 
   useEffect(() => {
     /* Cargamos los datos de la API. Le asignoamos la url de la API a la variable "apiURL" y a traves de los headers le pasamos los parametros que nos solicita para acceder, ya que la API es privada.*/
-    setAppState({ loading: true });
-    const apiUrl = 'https://movies-app1.p.rapidapi.com/api/movies';
+    const apiUrl = 'https://movies-app1.p.rapidapi.com/api/movie/' + id;
+
     fetch(apiUrl, {
       "method": "GET",
       "headers": {
@@ -29,6 +33,7 @@ const Peliculas = () => {
       });
   }, [setAppState]);
 
+  if (!appState.repos || appState.repos.length === 0) return <p>LA PELICULA NO CARGO</p>;
 
   return (
 
@@ -38,8 +43,7 @@ const Peliculas = () => {
       </Row>
       <Row>
         <Col className="col-3 foto">
-          <h1>Foto</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum expedita consequatur aliquid beatae minima!</p>
+        <Card.Img src={appState.repos.result.image} className="foto" />
         </Col>
         <Col className="col-6 letra txtleft">
           <Row className="h-50" >
@@ -55,12 +59,12 @@ const Peliculas = () => {
           </Row>
         </Col>
       </Row>
-      <Row className= "mgt">
+      <Row className="mgt">
         <form >
-        <div>
-          <textarea class="textarea" id="form4Example3" rows="3" placeholder="Escribi tu comentario"></textarea>
-          <label class="form-label" for="form4Example3" ></label>
-        </div>
+          <div>
+            <textarea class="textarea" id="form4Example3" rows="3" placeholder="Escribi tu comentario"></textarea>
+            <label class="form-label" for="form4Example3" ></label>
+          </div>
           <button type="submit" class="btn btn-block mb-4 letra">
             Comentar
           </button>
@@ -70,6 +74,8 @@ const Peliculas = () => {
     </Container>
 
   );
+  
 }
+
 
 export default Peliculas;

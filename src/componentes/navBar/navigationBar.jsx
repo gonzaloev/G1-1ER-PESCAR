@@ -62,6 +62,7 @@ function NavigationBar() {
                 <NavDropdown.Item href="#genero/3.13">Musical</NavDropdown.Item>
                 <NavDropdown.Item href="#genero/3.14">Terror</NavDropdown.Item>
               </NavDropdown>
+              <Nav.Link as={Link} to="/sobreNosotros">Sobre Nosotros</Nav.Link>
             </Nav>
             <Form className="d-flex">
               <FormControl

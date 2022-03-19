@@ -3,9 +3,8 @@ import { Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
-import { OverlayTrigger } from "react-bootstrap";
-import { Popover } from "react-bootstrap";
 import "./MejorRankeadas.css";
+import {Link} from "react-router-dom"
 
 const MejorRankeadas = (props) => {
   const { repos } = props;
@@ -18,18 +17,21 @@ const MejorRankeadas = (props) => {
       <Container className="mx-auto my-5 letra">
         <Row className="g-4">
           {repos.results.map((repo) => {
-            return(
-            <Card bg="dark"
-                  variant="light"
-                  style={{ width: "15rem" }}>
-              <Card.Img variant="top" src={repo.image}  style={{ height: "395px" }} />
-              <Card.Body>
-                <Card.Title>{repo.title}</Card.Title>
-                <Card.Text>{repo.rating}</Card.Text>
-                {/* <Button variant="primary">Go somewhere</Button> */}
-              </Card.Body>
-            </Card>
-          )})}
+            return (
+              <Card bg="dark"
+                variant="light"
+                style={{ width: "15rem" }}>
+                <Link to={`/Peliculas/${repo._id}`}>
+                  <Card.Img variant="top" src={repo.image} style={{ height: "395px" }} />
+                </Link>
+                <Card.Body>
+                  <Card.Title>{repo.title}</Card.Title>
+                  <Card.Text>{repo.rating}</Card.Text>
+                  {/* <Button variant="primary">Go somewhere</Button> */}
+                </Card.Body>
+              </Card>
+            )
+          })}
         </Row>
       </Container>
     </>
