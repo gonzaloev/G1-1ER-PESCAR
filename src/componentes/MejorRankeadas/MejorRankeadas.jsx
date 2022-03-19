@@ -15,7 +15,7 @@ const MejorRankeadas = (props) => {
   return (
     <>
       <h1>Mejor Rankeadas </h1>
-      <Container className="mx-auto my-5 ">
+      <Container className="mx-auto my-5 letra">
         <Row className="g-4">
           {repos.results.map((repo) => {
             return(

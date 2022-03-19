@@ -1,0 +1,34 @@
+.foto {
+    background-color: white;
+    width: 350px;
+    height: 550px;
+}
+
+.letra{
+    color: #FFD369;
+}
+
+.txtleft {
+    text-align: left;
+}
+
+.txtright {
+    text-align: right;
+}
+
+.txtcenter {
+    text-align: center;
+}
+
+.width50 {
+    width: 50%;
+}
+
+.mgt {
+    margin-top: 60px;
+}
+
+.textarea {
+    justify-content: center;
+    width:50%;
+}
