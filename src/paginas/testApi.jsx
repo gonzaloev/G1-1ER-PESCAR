@@ -17,7 +17,7 @@ function TestApiList() {
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "movies-app1.p.rapidapi.com",
-                "x-rapidapi-key": "32d6f1946emshd01b80456f42b38p1566bdjsn6a1d1e0303cc" // aca pasamos la key, si no no funciona la api
+                "x-rapidapi-key": "d8e18551b2mshec99f566b716819p135e54jsn84665705b4b0" // aca pasamos la key, si no no funciona la api
             }
         })
             .then((res) => res.json()) // devolvemos el JSON

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import NavigationBar from "../../componentes/navBar/navigationBar";
 import Footer from "../../componentes/Footer/Footer";
-import { Row, Container, Col } from "react-bootstrap";
+import { Row, Container, Col, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom"
 import "./PeliculasStyle.css";
 import Card from "react-bootstrap/Card";
@@ -10,11 +10,12 @@ const Peliculas = () => {
 
   const { id } = useParams()
 
-
   const [appState, setAppState] = useState({
     loading: true, // Le asignamos el estado falso como inicial
     repos: undefined,    // Lo iniciamos en null para compararlo mas adelante en un condicional
   });
+
+  const [url,setUrl] = useState(undefined)
 
   useEffect(() => {
     /* Cargamos los datos de la API. Le asignoamos la url de la API a la variable "apiURL" y a traves de los headers le pasamos los parametros que nos solicita para acceder, ya que la API es privada.*/
@@ -24,7 +25,7 @@ const Peliculas = () => {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "movies-app1.p.rapidapi.com",
-        "x-rapidapi-key": "32d6f1946emshd01b80456f42b38p1566bdjsn6a1d1e0303cc" // aca pasamos la key, si no no funciona la api
+        "x-rapidapi-key": "d8e18551b2mshec99f566b716819p135e54jsn84665705b4b0" // aca pasamos la key, si no no funciona la api
       }
     })
       .then((res) => res.json()) // devolvemos el JSON
@@ -32,6 +33,21 @@ const Peliculas = () => {
         setAppState({ loading: false, repos: repos }); //Usamos setAppState para cambiar el valor de repos que antes valia null
       });
   }, [setAppState]);
+
+  useEffect(()=>{
+    if(!appState.loading ){
+
+      let servidor = document.getElementById("selPelicula")
+      
+      if(url == undefined){
+        setUrl(appState.repos.result.embedUrls[0].url)
+      }
+
+      servidor.addEventListener("click",(e) => {   
+        setUrl(e.target.value)
+      })
+    }
+  })
 
   if (!appState.repos || appState.repos.length === 0) return <p>LA PELICULA NO CARGO</p>;
 
@@ -42,39 +58,38 @@ const Peliculas = () => {
         <NavigationBar />
       </Row>
       <Row>
-        <Col className="col-3 foto">
-        <Card.Img src={appState.repos.result.image} className="foto" />
+        <Col className="col-3 " xs>
+          <Card.Img src={appState.repos.result.image} />
         </Col>
-        <Col className="col-6 letra txtleft">
-          <Row className="h-50" >
-            <h3>Titulo Original</h3>
-            <h4>Sinopsis</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum aliquam ipsam iure, perspiciatis quibusdam minima tempore necessitatibus error illo ut?</p>
-          </Row>
-          <Row>
-            <p>Año:</p>
-            <p>Actores:</p>
-            <p>Director:</p>
-            <p>Generos:</p>
-          </Row>
+        <Col className="letra txtleft flex-end">
+          <h1>{appState.repos.result.title}</h1>
+          <h3>Sinopsis</h3>
+          <p>{appState.repos.result.description}</p>
+          <p>Año: {appState.repos.result.year}</p>
+          <p>Generos: {appState.repos.result.genres[0].name}</p>
+          <p>Calificacion: {appState.repos.result.rating}</p>
+          <p>Lanzamiento: {appState.repos.result.release}</p>
         </Col>
       </Row>
-      <Row className="mgt">
-        <form >
-          <div>
-            <textarea class="textarea" id="form4Example3" rows="3" placeholder="Escribi tu comentario"></textarea>
-            <label class="form-label" for="form4Example3" ></label>
-          </div>
-          <button type="submit" class="btn btn-block mb-4 letra">
-            Comentar
-          </button>
-        </form>
+      <Row>
+      <Row id="selPelicula">
+        {appState.repos.result.embedUrls.map((pelicula) => {
+          return (
+              <Col>
+                <Button value={pelicula.url}>{pelicula.server}</Button>
+              </Col>
+          );
+        })}
+        </Row>
+      </Row>
+      <Row>
+        <iframe width="1080" height="600" src={url} frameborder="0" ></iframe>
       </Row>
       <Footer />
     </Container>
 
   );
-  
+
 }
 
 

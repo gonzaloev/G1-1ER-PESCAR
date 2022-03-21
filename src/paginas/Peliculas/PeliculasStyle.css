@@ -2,7 +2,20 @@
     background-color: dark;
     width: auto;
     height: auto;
+}
 
+.acomodar{
+    align-content: flex-end;
+}
+
+.flex-end{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.linea{
+    border: 2px solid aliceblue
 }
 
 .letra{
