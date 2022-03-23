@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect }from "react";
 import Navbar from "react-bootstrap/Navbar";
 import { Container } from "react-bootstrap";
 import { Nav } from "react-bootstrap";
@@ -7,17 +7,23 @@ import "./navigationBarStyles.css";
 import { Form } from "react-bootstrap";
 import { FormControl } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-
 import Dropdown from 'react-bootstrap/Dropdown'
-
 import { Link } from "react-router-dom";
-/***********/
-
-
-
-//import logo from "../../imgs/logo.png";
 
 function NavigationBar() {
+
+  const [buscarPelicula, setBuscarPelicula] = useState(undefined)
+
+  useEffect(() => {
+
+    let variable = document.getElementById("buscar").addEventListener("click",() => {
+
+      if(document.getElementById("buscador").value.length > 1){
+        setBuscarPelicula(document.getElementById("buscador").value)
+      }
+    })
+  })
+
   return (
     <>
       <Navbar
@@ -26,12 +32,12 @@ function NavigationBar() {
         expand="lg"
         style={{ backgroundColor: "#FFD369" }}
       >
-        <Container style = {{marginBottom:'60px'}}>
+        <Container style={{ marginBottom: '60px' }}>
           <Navbar.Brand
-            as={Link} 
+            as={Link}
             to="/"
             className="fw-bold"
-            
+
             style={{ color: "#FFD369" }}
           >
             Moovies
@@ -45,7 +51,7 @@ function NavigationBar() {
                 title="Género"
                 id="basic-nav-dropdown"
                 variant="dark"
-                
+
               >
                 <NavDropdown.Item href="#genero/3.1">Acción</NavDropdown.Item>
                 <NavDropdown.Item href="#genero/3.2">Aventura</NavDropdown.Item>
@@ -70,8 +76,11 @@ function NavigationBar() {
                 placeholder="Buscar"
                 className="me-2"
                 aria-label="Search"
+                id="buscador"
               />
-              <Button variant="danger">Buscar</Button>
+              <Link to={`/buscarPelicula/${buscarPelicula}`}>
+                <Button id="buscar" variant="primary">Buscar</Button>
+              </Link>
             </Form>
           </Navbar.Collapse>
         </Container>

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import NavigationBar from "../../componentes/navBar/navigationBar";
 import Footer from "../../componentes/Footer/Footer";
-import { Row, Container, Col, Button } from "react-bootstrap";
+import { Row, Container, Col, Button, Card } from "react-bootstrap";
 import { useParams } from "react-router-dom"
 import "./PeliculasStyle.css";
-import Card from "react-bootstrap/Card";
 
 const Peliculas = () => {
 
