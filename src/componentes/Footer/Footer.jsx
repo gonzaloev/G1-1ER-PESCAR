@@ -11,7 +11,7 @@ import "./FooterStyles.css"
 const Footer = () => {
 return (
 	<Container className="letra" bg="primary">
-    <div >
+    <div style={{marginTop:'100px'}} >
     <Row >
       <h2>Footer MK1</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, numquam excepturi. Cum sint, voluptas autem impedit doloribus facilis? Voluptatum itaque blanditiis explicabo a aut. Aliquam dolore earum doloribus non dolorum optio cupiditate. Eos ex sit dicta quasi tempora voluptas doloremque illum consequuntur porro beatae odio, ab impedit, fugiat eaque minus adipisci!</p>
