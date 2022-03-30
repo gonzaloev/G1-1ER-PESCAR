@@ -9,6 +9,7 @@ import "./PeliculasStyle.css";
 import { Link } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 const apiKey = process.env.REACT_APP_API;
+const API_IMG="https://image.tmdb.org/t/p/w500"
 
 const Peliculas = () => {
   const { id } = useParams();
@@ -19,7 +20,6 @@ const Peliculas = () => {
   });
 
   const [url, setUrl] = useState(undefined);
-
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -34,14 +34,10 @@ const Peliculas = () => {
   }, [setAppState]);
 
   useEffect(() => {
-    
-
-
     if (!appState.loading) {
       let servidor = document.getElementById("selPelicula");
 
       if (url == undefined) {
-        setUrl(appState.repos.result.embedUrls[0].url);
       }
 
       servidor.addEventListener("click", (e) => {
@@ -53,17 +49,18 @@ const Peliculas = () => {
   if (!appState.repos || appState.repos.length === 0)
     return <p>LA PELICULA NO CARGO</p>;
 
+    console.log(appState.repos)
   return (
     <Container>
       <Row>
         <NavigationBar />
       </Row>
-      <h3 style={{color:'red'}}>{appState.repos.result.title}</h3>
+      <h3 style={{color:'red'}}>{appState.repos.original_title}</h3>
       <div style={{color:'white', textAlign:'left', margin:'20px', fontWeight:'bold'}}>
-        <Link as={Link} to="/" style={{textDecoration:'none', color:'rgba(253,231,22)'}}>Inicio</Link> » {appState.repos.result.title}
+        <Link as={Link} to="/" style={{textDecoration:'none', color:'rgba(253,231,22)'}}>Inicio</Link> » {appState.repos.original_title}
       </div>
       <Row>
-        <iframe width="1080" height="600" src={url} frameborder="0"></iframe>
+        {/*<iframe width="1080" height="600" src={url} frameborder="0"></iframe>*/}
       </Row>
       
       <Button
@@ -78,37 +75,36 @@ const Peliculas = () => {
         <div>
         <Row>
         <Row id="selPelicula">
-          {appState.repos.result.embedUrls.map((pelicula) => {
+          {/*appState.repos.result.embedUrls.map((pelicula) => {
             return (
               <Col>
                 <Button value={pelicula.url}>{pelicula.server}</Button>
               </Col>
             );
-          })}
+            */})}
         </Row>
       </Row>
         </div>
       </Collapse>
       <Row>
         <Col className="col-3 " xs>
-          <Card.Img src={appState.repos.result.image} />
+          <Card.Img src={API_IMG + appState.repos.poster_path}/>
         </Col>
 
         <Col className="letra txtleft flex-end">
-          <h1>{appState.repos.result.title}</h1>
+          <h1>{appState.repos.original_title}</h1>
           {/* <h3>Sinopsis</h3> */}
-          <p><i>{appState.repos.result.description}</i></p>
+          <p><i>{appState.repos.overview}</i></p>
           <Row className="lista">
-          <p><b>Año:</b> {appState.repos.result.year}</p>
-          <p><b>Generos:</b> {appState.repos.result.genres[0].name}</p>
-          <p><b>País:</b> {appState.repos.result.countries[0].name}</p>
-          <p><b>Lanzamiento:</b> {appState.repos.result.release}</p>
-          <p><b>Calificacion:</b> {appState.repos.result.rating}</p>
+          <p><b>Año:</b> {appState.repos.release_date}</p>
+          <p><b>Generos:</b> {appState.repos.genres[0].name}</p>
+          <p><b>País:</b> {appState.repos.production_countries[0].name}</p>
+          <p><b>Lanzamiento:</b> {appState.repos.release_date}</p>
+          <p><b>Calificacion:</b> {appState.repos.vote_average}</p>
           <hr />
           </Row>
         </Col>
       </Row>
- 
       <Footer />
     </Container>
   );
