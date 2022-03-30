@@ -2,16 +2,12 @@ import React from "react";
 import { Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
-import Col from "react-bootstrap/Col";
 import "./MejorRankeadas.css";
 import {Link} from "react-router-dom"
 const API_IMG="https://image.tmdb.org/t/p/w500"
 
 const MejorRankeadas = (props, poster_path) => {
   const { repos } = props;
-
-  console.log(repos)
-  alert("hola")
 
   if (!repos || repos.length === 0) return <p>no se logro cargar la pelicula</p>;
   
