@@ -46,3 +46,33 @@
     justify-content: center;
     width:50%;
 }
+
+.lista > p{
+    /* margin: -2px;
+    font-size: small; */
+
+}
+
+.overlay{
+    width: 110px;
+    height: 110px;
+    background-position: 50% 25%;
+    background-size: cover;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    margin-top: -55px;
+    margin-left: -55px;
+    left: 50%;
+    z-index: 2;
+    border-radius: 55px;
+    border: 6px solid rgba(255,255,255,1);
+}
+
+@media screen and (max-width: 520px)
+{.overlay .overlay::before {
+    width: 70px;
+    height: 70px;
+    margin-top: -35px;
+    margin-left: -35px;
+}}

@@ -7,7 +7,13 @@ import "./navigationBarStyles.css";
 import { Form } from "react-bootstrap";
 import { FormControl } from "react-bootstrap";
 import { Button } from "react-bootstrap";
+<<<<<<< HEAD
 import Dropdown from 'react-bootstrap/Dropdown'
+=======
+
+
+
+>>>>>>> 7702a855035550bb828687b517b1cef345bdd245
 import { Link } from "react-router-dom";
 
 function NavigationBar() {
