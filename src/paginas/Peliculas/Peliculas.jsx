@@ -8,6 +8,8 @@ import { Collapse } from "react-bootstrap";
 import "./PeliculasStyle.css";
 import { Link } from "react-router-dom";
 import { Nav } from "react-bootstrap";
+import YouTube from "react-youtube";
+
 const apiKey = process.env.REACT_APP_API;
 const API_IMG="https://image.tmdb.org/t/p/w500"
 
@@ -24,7 +26,7 @@ const Peliculas = () => {
 
   useEffect(() => {
     /* Cargamos los datos de la API. Le asignoamos la url de la API a la variable "apiURL" y a traves de los headers le pasamos los parametros que nos solicita para acceder, ya que la API es privada.*/
-    const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`;
+    const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=es-ES`;
 
     fetch(apiUrl)
       .then((res) => res.json()) // devolvemos el JSON
@@ -33,23 +35,11 @@ const Peliculas = () => {
       });
   }, [setAppState]);
 
-  useEffect(() => {
-    if (!appState.loading) {
-      let servidor = document.getElementById("selPelicula");
-
-      if (url == undefined) {
-      }
-
-      servidor.addEventListener("click", (e) => {
-        setUrl(e.target.value);
-      });
-    }
-  });
 
   if (!appState.repos || appState.repos.length === 0)
     return <p>LA PELICULA NO CARGO</p>;
 
-    console.log(appState.repos)
+    
   return (
     <Container>
       <Row>
@@ -63,14 +53,6 @@ const Peliculas = () => {
         {/*<iframe width="1080" height="600" src={url} frameborder="0"></iframe>*/}
       </Row>
       
-      <Button
-        onClick={() => setOpen(!open)}
-        aria-controls="example-collapse-text"
-        aria-expanded={open}
-        style={{margin:'20px'}}
-      >
-        Servidores
-      </Button>
       <Collapse in={open}>
         <div>
         <Row>
@@ -81,7 +63,7 @@ const Peliculas = () => {
                 <Button value={pelicula.url}>{pelicula.server}</Button>
               </Col>
             );
-            */})}
+            */})
         </Row>
       </Row>
         </div>
@@ -102,12 +84,15 @@ const Peliculas = () => {
           <p><b>Lanzamiento:</b> {appState.repos.release_date}</p>
           <p><b>Calificacion:</b> {appState.repos.vote_average}</p>
           <hr />
+          <source src="https://api.themoviedb.org/3/movie/634649/videos?api_key=24c3023d283ecae1f5d3ab494944bf29&language=en-US" type="video/mp4"/>
+          <YouTube src="https://api.themoviedb.org/3/movie/634649/videos?api_key=24c3023d283ecae1f5d3ab494944bf29&language=en-US"/>
+          <p>video arriba</p>
           </Row>
         </Col>
       </Row>
       <Footer />
     </Container>
-  );
+  )
 };
 
 export default Peliculas;
