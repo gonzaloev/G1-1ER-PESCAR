@@ -8,17 +8,16 @@ import { Form } from "react-bootstrap";
 import { FormControl } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { BuscarPelicula } from "../../paginas/Peliculas/BuscarPelicula";
 
 function NavigationBar() {
 
   const [buscarPelicula, setBuscarPelicula] = useState(undefined)
 
   useEffect(() => {
-
-    let variable = document.getElementById("buscar").addEventListener("click",() => {
-
-      if(document.getElementById("buscador").value.length > 1){
-        setBuscarPelicula(document.getElementById("buscador").value)
+    document.getElementById("buscar").addEventListener("click",() => {
+      if(document.getElementById("buscador").value.length > 1){           //Agarra el valor del input solo si es mayor a 1 sino agarra undefined
+        setBuscarPelicula(document.getElementById("buscador").value)      //Valor del input buscar
       }
     })
   })
@@ -52,20 +51,21 @@ function NavigationBar() {
                 variant="dark"
 
               >
-                <NavDropdown.Item href="#genero/3.1">Acción</NavDropdown.Item>
-                <NavDropdown.Item href="#genero/3.2">Aventura</NavDropdown.Item>
-                <NavDropdown.Item href="#genero/3.3">Comedia</NavDropdown.Item>
-                <NavDropdown.Item href="#genero/3.4">Documental</NavDropdown.Item>
-                <NavDropdown.Item href="#genero/3.5">Misterio</NavDropdown.Item>
-                <NavDropdown.Item href="#genero/3.6">Thriller</NavDropdown.Item>
-                <NavDropdown.Item href="#genero/3.7">Romance</NavDropdown.Item>
-                <NavDropdown.Item href="#genero/3.8">Animación</NavDropdown.Item>
-                <NavDropdown.Item href="#genero/3.9">Bélico Guerra</NavDropdown.Item>
-                <NavDropdown.Item href="#genero/3.10">Ciencia Ficción</NavDropdown.Item>
-                <NavDropdown.Item href="#genero/3.11">Drama</NavDropdown.Item>
-                <NavDropdown.Item href="#genero/3.12">Fantasía</NavDropdown.Item>
-                <NavDropdown.Item href="#genero/3.13">Musical</NavDropdown.Item>
-                <NavDropdown.Item href="#genero/3.14">Terror</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={`/generos/28`}>Acción</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={`/generos/12`}>Aventura</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={`/generos/35`}>Comedia</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={`/generos/99`}>Documental</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={`/generos/53`}>Misterio</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={`/generos/37`}>Western</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={`/generos/10749`}>Romance</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={`/generos/16`}>Animacion</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={`/generos/10752`}>Guerra</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={`/generos/878`}>Ciencia Ficcion</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={`/generos/18`}>Drama</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={`/generos/14`}>Fantasia</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={`/generos/10402`}>Musical</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={`/generos/27`}>Terror</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={`/generos/36`}>Histora</NavDropdown.Item>
               </NavDropdown>
               <Nav.Link as={Link} to="/sobreNosotros">Sobre Nosotros</Nav.Link>
             </Nav>

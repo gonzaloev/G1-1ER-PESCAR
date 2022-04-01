@@ -23,7 +23,7 @@ const Peliculas = () => {
 
   useEffect(() => {
     /* Cargamos los datos de la API. Le asignoamos la url de la API a la variable "apiURL" y a traves de los headers le pasamos los parametros que nos solicita para acceder, ya que la API es privada.*/
-    const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`;
+    const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=es-ES`;
 
     fetch(apiUrl)
       .then((res) => res.json()) // devolvemos el JSON
@@ -32,29 +32,14 @@ const Peliculas = () => {
       });
   }, [setAppState]);
 
-  useEffect(() => {
-    if (!appState.loading) {
-      let servidor = document.getElementById("selPelicula");
+  if (!appState.repos || appState.repos.length === 0)return <p>LA PELICULA NO CARGO</p>;
 
-      if (url == undefined) {
-      }
-
-      servidor.addEventListener("click", (e) => {
-        setUrl(e.target.value);
-      });
-    }
-  });
-
-  if (!appState.repos || appState.repos.length === 0)
-    return <p>LA PELICULA NO CARGO</p>;
-
-    console.log(appState.repos)
   return (
     <Container>
       <Row>
         <NavigationBar />
       </Row>
-      <h3 style={{color:'red'}}>{appState.repos.original_title}</h3>
+      <h3 style={{color:'red'}}>{appState.repos.title}</h3>
       <div style={{color:'white', textAlign:'left', margin:'20px', fontWeight:'bold'}}>
         <Link as={Link} to="/" style={{textDecoration:'none', color:'rgba(253,231,22)'}}>Inicio</Link> » {appState.repos.original_title}
       </div>
@@ -91,7 +76,7 @@ const Peliculas = () => {
         </Col>
 
         <Col className="letra txtleft flex-end">
-          <h1>{appState.repos.original_title}</h1>
+          <h1>{appState.repos.title}</h1>
           {/* <h3>Sinopsis</h3> */}
           <p><i>{appState.repos.overview}</i></p>
           <Row className="lista">
