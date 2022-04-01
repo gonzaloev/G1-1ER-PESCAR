@@ -5,6 +5,7 @@ import Footer from "../../componentes/Footer/Footer";
 import "./PeliculasStyle.css";
 import { useParams } from "react-router-dom"
 import {Link} from "react-router-dom"
+import { Loader } from '../../componentes/Loader/Loader';
 const API_IMG="https://image.tmdb.org/t/p/w500"
 const apiKey = process.env.REACT_APP_API;
 
@@ -27,7 +28,7 @@ export const BuscarPelicula = () => {
         });
     }, [nombrePelicula]);
 
-  if (!appState.repos || appState.repos.length === 0)return <p>LA PELICULA NO CARGO</p>;
+  if (!appState.repos || appState.repos.length === 0)return <Loader/>;
     
   return (
     <Container>

@@ -7,6 +7,7 @@ import Card from "react-bootstrap/Card";
 import { Collapse } from "react-bootstrap";
 import "./PeliculasStyle.css";
 import { Link } from "react-router-dom";
+import { Loader } from "../../componentes/Loader/Loader";
 const apiKey = process.env.REACT_APP_API;
 const API_IMG="https://image.tmdb.org/t/p/w500"
 
@@ -32,7 +33,8 @@ const Peliculas = () => {
       });
   }, [setAppState]);
 
-  if (!appState.repos || appState.repos.length === 0)return <p>LA PELICULA NO CARGO</p>;
+
+  if (!appState.repos || appState.repos.length === 0)return <Loader/>;
 
   return (
     <Container>

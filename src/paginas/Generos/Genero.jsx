@@ -4,6 +4,7 @@ import NavigationBar from "../../componentes/navBar/navigationBar";
 import Footer from "../../componentes/Footer/Footer";
 import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
+import { Loader } from '../../componentes/Loader/Loader';
 const API_IMG = "https://image.tmdb.org/t/p/w500"
 const apiKey = process.env.REACT_APP_API;
 
@@ -26,9 +27,7 @@ const Genero = () => {
       });
   }, [genero]);
 
-  if (!appState.repos || appState.repos.length === 0)return <p>LA PELICULA NO CARGO</p>;
-  console.log(appState.repos)
-
+  if (!appState.repos || appState.repos.length === 0 )return <Loader/>;
 
   return (
     <Container>

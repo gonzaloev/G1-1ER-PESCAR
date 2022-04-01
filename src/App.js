@@ -9,6 +9,7 @@ import SobreNosotros from './paginas/sobreNosotros'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { BuscarPelicula } from './paginas/Peliculas/BuscarPelicula';
 import Genero from './paginas/Generos/Genero';
+import { Loader } from './componentes/Loader/Loader';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
           <Route path='/sobreNosotros' element={<SobreNosotros/>}/>
           <Route path='/buscarPelicula/:nombrePelicula' element={<BuscarPelicula/>}/>
           <Route path='/generos/:genero' element={<Genero/>}/>
+          <Route path='/loader' element={<Loader/>}/>
         </Routes>
       </BrowserRouter>
 

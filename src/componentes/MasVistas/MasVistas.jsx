@@ -4,13 +4,14 @@ import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import { Button } from "react-bootstrap";
+import { Loader } from "../Loader/Loader";
 
 /* import "../MasVistas/MasVistasElements.css" */
 
 const MasVistas = (props) => {
   const { repos } = props;
 
-  if (!repos || repos.length === 0) return <p></p>;
+  if (!repos || repos.length === 0) return <Loader/>;
 
   return (
     <ul>
