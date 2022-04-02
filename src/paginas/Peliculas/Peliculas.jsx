@@ -4,29 +4,38 @@ import Footer from "../../componentes/Footer/Footer";
 import { Row, Container, Col, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
-import { Collapse } from "react-bootstrap";
 import "./PeliculasStyle.css";
 import { Link } from "react-router-dom";
-import { Nav } from "react-bootstrap";
 import YouTube from "react-youtube";
 
 const apiKey = process.env.REACT_APP_API;
-const API_IMG="https://image.tmdb.org/t/p/w500"
+const API_IMG = "https://image.tmdb.org/t/p/w500";
 
 const Peliculas = () => {
   const { id } = useParams();
+  /* const [playing, setPlaying] = useState(false) */
 
+  /* const [trailer, setTrailer] = useState(null); */
   const [appState, setAppState] = useState({
     loading: true, // Le asignamos el estado falso como inicial
     repos: undefined, // Lo iniciamos en null para compararlo mas adelante en un condicional
   });
 
-  const [url, setUrl] = useState(undefined);
-  const [open, setOpen] = useState(false);
+  //https://github.com/dom-the-dev/movie-trailer-app/blob/main/src/App.js
+
+  const IMAGE_PATH = "https://image.tmdb.org/t/p/w1280";
 
   useEffect(() => {
     /* Cargamos los datos de la API. Le asignoamos la url de la API a la variable "apiURL" y a traves de los headers le pasamos los parametros que nos solicita para acceder, ya que la API es privada.*/
-    const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=es-ES`;
+    const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=es-ES&append_to_response=videos`;
+    console.log(id);
+
+    /* if (appState.videos && appState.videos.results) {
+      const trailer = appState.videos.results.find(
+        (vid) => vid.name === "Official Trailer"
+      );
+      setTrailer(trailer ? trailer : appState.videos.results[0]);
+    } */
 
     fetch(apiUrl)
       .then((res) => res.json()) // devolvemos el JSON
@@ -35,64 +44,124 @@ const Peliculas = () => {
       });
   }, [setAppState]);
 
-
   if (!appState.repos || appState.repos.length === 0)
     return <p>LA PELICULA NO CARGO</p>;
 
-    
+  /* console.log(appState.repos) */
+  //console.log(appState.repos.results.key)
   return (
-    <Container>
-      <Row>
-        <NavigationBar />
-      </Row>
-      <h3 style={{color:'red'}}>{appState.repos.original_title}</h3>
-      <div style={{color:'white', textAlign:'left', margin:'20px', fontWeight:'bold'}}>
-        <Link as={Link} to="/" style={{textDecoration:'none', color:'rgba(253,231,22)'}}>Inicio</Link> » {appState.repos.original_title}
-      </div>
-      <Row>
-        {/*<iframe width="1080" height="600" src={url} frameborder="0"></iframe>*/}
-      </Row>
-      
-      <Collapse in={open}>
-        <div>
-        <Row>
-        <Row id="selPelicula">
-          {/*appState.repos.result.embedUrls.map((pelicula) => {
-            return (
-              <Col>
-                <Button value={pelicula.url}>{pelicula.server}</Button>
-              </Col>
-            );
-            */})
-        </Row>
-      </Row>
-        </div>
-      </Collapse>
-      <Row>
-        <Col className="col-3 " xs>
-          <Card.Img src={API_IMG + appState.repos.poster_path}/>
-        </Col>
+    <>
+      <div
+        className="hero"
+        style={{
+          backgroundImage: `url('${IMAGE_PATH}${appState.repos.backdrop_path}')`,
+        }}
+      >
+        <div className="hero-content max-center">
+          {/* {appState.repos.videos ? renderTrailer() : null} */}
+          {/* <YouTube
+                      videoId={trailer.key}
+                      
+                    /> */}
 
-        <Col className="letra txtleft flex-end">
-          <h1>{appState.repos.original_title}</h1>
-          {/* <h3>Sinopsis</h3> */}
-          <p><i>{appState.repos.overview}</i></p>
-          <Row className="lista">
-          <p><b>Año:</b> {appState.repos.release_date}</p>
-          <p><b>Generos:</b> {appState.repos.genres[0].name}</p>
-          <p><b>País:</b> {appState.repos.production_countries[0].name}</p>
-          <p><b>Lanzamiento:</b> {appState.repos.release_date}</p>
-          <p><b>Calificacion:</b> {appState.repos.vote_average}</p>
-          <hr />
-          <source src="https://api.themoviedb.org/3/movie/634649/videos?api_key=24c3023d283ecae1f5d3ab494944bf29&language=en-US" type="video/mp4"/>
-          <YouTube src="https://api.themoviedb.org/3/movie/634649/videos?api_key=24c3023d283ecae1f5d3ab494944bf29&language=en-US"/>
-          <p>video arriba</p>
-          </Row>
-        </Col>
-      </Row>
-      <Footer />
-    </Container>
-  )
+          {/* <YouTube
+            videoId={trailer.key}
+            className={"youtube amru"}
+            containerClassName={"youtube-container amru"}
+            opts={{
+              width: "100%",
+              height: "100%",
+              playerVars: {
+                autoplay: 1,
+                controls: 0,
+                cc_load_policy: 0,
+                fs: 0,
+                iv_load_policy: 0,
+                modestbranding: 0,
+                rel: 0,
+                showinfo: 0,
+              },
+            }}
+          /> */}
+          {/* {trailer ?
+                                            <button className={"button play-video"} onClick={() => setPlaying(true)}
+                                                    type="button">Play
+                                                Trailer</button>
+                                            : 'Sorry, no trailer available'} */}
+          <Button>Play Trailer</Button>
+          <h1 className="hero-title">{appState.repos.original_title}</h1>
+          {appState.repos.overview ? (
+            <p className={"hero-overview"}>{appState.repos.overview}</p>
+          ) : null}
+        </div>
+      </div>
+      <Container>
+        <Row>
+          <NavigationBar />
+        </Row>
+        <Row>
+          {/*<iframe width="1080" height="600" src={url} frameborder="0"></iframe>*/}
+        </Row>
+
+        <h3 style={{ color: "red" }}>{appState.repos.original_title}</h3>
+        <div
+          style={{
+            color: "white",
+            textAlign: "left",
+            margin: "20px",
+            fontWeight: "bold",
+          }}
+        >
+          <Link
+            as={Link}
+            to="/"
+            style={{ textDecoration: "none", color: "rgba(253,231,22)" }}
+          >
+            Inicio
+          </Link>{" "}
+          » {appState.repos.original_title}
+        </div>
+
+        <Row>
+          <Col className="col-3 " xs>
+            <Card.Img src={API_IMG + appState.repos.poster_path} />
+          </Col>
+
+          <Col className="letra txtleft flex-end">
+            <h1>{appState.repos.original_title}</h1>
+            {/* <h3>Sinopsis</h3> */}
+            <p>
+              <i>{appState.repos.overview}</i>
+            </p>
+            <Row className="lista">
+              <p>
+                <b>Año:</b> {appState.repos.release_date}
+              </p>
+              <p>
+                <b>Generos:</b> {appState.repos.genres[0].name}
+              </p>
+              <p>
+                <b>País:</b> {appState.repos.production_countries[0].name}
+              </p>
+              <p>
+                <b>Lanzamiento:</b> {appState.repos.release_date}
+              </p>
+              <p>
+                <b>Calificacion:</b> {appState.repos.vote_average}
+              </p>
+              <p>
+                <b>Link:</b> {appState.repos.homepage}
+              </p>
+              <hr />
+            </Row>
+          </Col>
+        </Row>
+        <Footer />
+
+        <div className="max-center">{/* {renderMovies()} */}</div>
+      </Container>
+    </>
+  );
 };
 
 export default Peliculas;
