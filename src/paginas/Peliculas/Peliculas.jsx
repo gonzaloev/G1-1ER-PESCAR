@@ -4,27 +4,33 @@ import Footer from "../../componentes/Footer/Footer";
 import { Row, Container, Col, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
-import { Collapse } from "react-bootstrap";
 import "./PeliculasStyle.css";
 import { Link } from "react-router-dom";
 import { Loader } from "../../componentes/Loader/Loader";
+import YouTube from "react-youtube";
+
 const apiKey = process.env.REACT_APP_API;
-const API_IMG="https://image.tmdb.org/t/p/w500"
+const API_IMG = "https://image.tmdb.org/t/p/w500";
 
 const Peliculas = () => {
   const { id } = useParams();
+  /* const [playing, setPlaying] = useState(false) */
 
+  /* const [trailer, setTrailer] = useState(null); */
   const [appState, setAppState] = useState({
     loading: true, // Le asignamos el estado falso como inicial
     repos: undefined, // Lo iniciamos en null para compararlo mas adelante en un condicional
   });
 
-  const [url, setUrl] = useState(undefined);
-  const [open, setOpen] = useState(false);
+  //https://github.com/dom-the-dev/movie-trailer-app/blob/main/src/App.js
+
+  const IMAGE_PATH = "https://image.tmdb.org/t/p/w1280";
 
   useEffect(() => {
     /* Cargamos los datos de la API. Le asignoamos la url de la API a la variable "apiURL" y a traves de los headers le pasamos los parametros que nos solicita para acceder, ya que la API es privada.*/
-    const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=es-ES`;
+    const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&append_to_response=videos`;
+    console.log(appState.repos);
+
 
     fetch(apiUrl)
       .then((res) => res.json()) // devolvemos el JSON
@@ -33,66 +39,99 @@ const Peliculas = () => {
       });
   }, [setAppState]);
 
+  if (!appState.repos || appState.repos.length === 0)
+    return <p>LA PELICULA NO CARGO</p>;
+  
+  const trailer = appState.repos.videos.results.find((vid) => vid.name === "Official Trailer");
 
-  if (!appState.repos || appState.repos.length === 0)return <Loader/>;
-
+ 
+ 
   return (
-    <Container>
-      <Row>
-        <NavigationBar />
-      </Row>
-      <h3 style={{color:'red'}}>{appState.repos.title}</h3>
-      <div style={{color:'white', textAlign:'left', margin:'20px', fontWeight:'bold'}}>
-        <Link as={Link} to="/" style={{textDecoration:'none', color:'rgba(253,231,22)'}}>Inicio</Link> » {appState.repos.original_title}
-      </div>
-      <Row>
-        {/*<iframe width="1080" height="600" src={url} frameborder="0"></iframe>*/}
-      </Row>
-      
-      <Button
-        onClick={() => setOpen(!open)}
-        aria-controls="example-collapse-text"
-        aria-expanded={open}
-        style={{margin:'20px'}}
+    <>
+      <div
+        className="hero"
+        style={{
+          backgroundImage: `url('${IMAGE_PATH}${appState.repos.backdrop_path}')`,
+        }}
       >
-        Servidores
-      </Button>
-      <Collapse in={open}>
-        <div>
-        <Row>
-        <Row id="selPelicula">
-          {/*appState.repos.result.embedUrls.map((pelicula) => {
-            return (
-              <Col>
-                <Button value={pelicula.url}>{pelicula.server}</Button>
-              </Col>
-            );
-            */}
-        </Row>
-      </Row>
-        </div>
-      </Collapse>
-      <Row>
-        <Col className="col-3 " xs>
-          <Card.Img src={API_IMG + appState.repos.poster_path}/>
-        </Col>
+        <div className="hero-content max-center">
+ 
 
-        <Col className="letra txtleft flex-end">
-          <h1>{appState.repos.title}</h1>
-          {/* <h3>Sinopsis</h3> */}
-          <p><i>{appState.repos.overview}</i></p>
-          <Row className="lista">
-          <p><b>Año:</b> {appState.repos.release_date}</p>
-          <p><b>Generos:</b> {appState.repos.genres[0].name}</p>
-          <p><b>País:</b> {appState.repos.production_countries[0].name}</p>
-          <p><b>Lanzamiento:</b> {appState.repos.release_date}</p>
-          <p><b>Calificacion:</b> {appState.repos.vote_average}</p>
-          <hr />
-          </Row>
-        </Col>
-      </Row>
-      <Footer />
-    </Container>
+         
+         
+          <h1 className="hero-title">{appState.repos.original_title}</h1>
+          {appState.repos.overview ? (
+            <p className={"hero-overview"}>{appState.repos.overview}</p>
+            ) : null}
+        </div>
+      </div>
+      <Container>
+        <Row>
+          <NavigationBar />
+        </Row>
+        <Row>
+            <YouTube videoId={trailer.key} className={"youtube amru"} />
+          
+        </Row>
+
+        <h3 style={{ color: "red" }}>{appState.repos.original_title}</h3>
+        <div
+          style={{
+            color: "white",
+            textAlign: "left",
+            margin: "20px",
+            fontWeight: "bold",
+          }}
+        >
+          <Link
+            as={Link}
+            to="/"
+            style={{ textDecoration: "none", color: "rgba(253,231,22)" }}
+          >
+            Inicio
+          </Link>{" "}
+          » {appState.repos.original_title}
+        </div>
+
+        <Row>
+          <Col className="col-3 " xs>
+            <Card.Img src={API_IMG + appState.repos.poster_path} className="radius"/>
+            <Button size="lg" href={appState.repos.homepage} target="_blank">asdasd</Button>
+          </Col>
+
+          <Col className="letra txtleft flex-end">
+            <h1>{appState.repos.original_title}</h1>
+            {/* <h3>Sinopsis</h3> */}
+            <p>
+              <i>{appState.repos.overview}</i>
+            </p>
+            <Row className="lista">
+              <p>
+                <b>Año:</b> {appState.repos.release_date}
+              </p>
+              <p>
+                <b>Generos:</b> {appState.repos.genres[0].name}
+              </p>
+              <p>
+                <b>País:</b> {appState.repos.production_countries[0].name}
+              </p>
+              <p>
+                <b>Lanzamiento:</b> {appState.repos.release_date}
+              </p>
+              <p>
+                <b>Calificacion:</b> {appState.repos.vote_average}
+              </p>
+              <p>
+                <b>Link:</b> {appState.repos.homepage}
+              </p>
+              <hr />
+            </Row>
+          </Col>
+        </Row>
+        <Footer />
+
+      </Container>
+    </>
   );
 };
 

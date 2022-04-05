@@ -53,26 +53,32 @@
 
 }
 
-.overlay{
-    width: 110px;
-    height: 110px;
-    background-position: 50% 25%;
-    background-size: cover;
-    display: inline-block;
-    position: absolute;
-    top: 50%;
-    margin-top: -55px;
-    margin-left: -55px;
-    left: 50%;
-    z-index: 2;
-    border-radius: 55px;
-    border: 6px solid rgba(255,255,255,1);
+.max-center{
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-@media screen and (max-width: 520px)
-{.overlay .overlay::before {
-    width: 70px;
-    height: 70px;
-    margin-top: -35px;
-    margin-left: -35px;
-}}
+.hero{
+    min-height: 500px;
+    background-position: top center;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    background-position: 0px;
+}
+
+.hero-content{
+    max-width: 70%;
+}
+
+.hero-title{
+    font-size: 72px;
+    margin:0;
+
+}
+
+.radius{
+    border-top-left-radius: 0.5em 1em;
+    border-top-right-radius: 0.5em 1em;
+}

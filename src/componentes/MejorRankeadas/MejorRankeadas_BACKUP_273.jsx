@@ -9,8 +9,11 @@ const API_IMG="https://image.tmdb.org/t/p/w500"
 const MejorRankeadas = (props, poster_path) => {
   const { repos } = props;
 
+<<<<<<< HEAD
   
 
+=======
+>>>>>>> Dev
   if (!repos || repos.length === 0) return <p>no se logro cargar la pelicula</p>;
   
   return (
