@@ -27,15 +27,9 @@ const Peliculas = () => {
 
   useEffect(() => {
     /* Cargamos los datos de la API. Le asignoamos la url de la API a la variable "apiURL" y a traves de los headers le pasamos los parametros que nos solicita para acceder, ya que la API es privada.*/
-    const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=es-ES&append_to_response=videos`;
-    console.log(id);
+    const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&append_to_response=videos`;
+    console.log(appState.repos);
 
-    /* if (appState.videos && appState.videos.results) {
-      const trailer = appState.videos.results.find(
-        (vid) => vid.name === "Official Trailer"
-      );
-      setTrailer(trailer ? trailer : appState.videos.results[0]);
-    } */
 
     fetch(apiUrl)
       .then((res) => res.json()) // devolvemos el JSON
@@ -46,9 +40,11 @@ const Peliculas = () => {
 
   if (!appState.repos || appState.repos.length === 0)
     return <p>LA PELICULA NO CARGO</p>;
+  
+  const trailer = appState.repos.videos.results.find((vid) => vid.name === "Official Trailer");
 
-  /* console.log(appState.repos) */
-  //console.log(appState.repos.results.key)
+ 
+ 
   return (
     <>
       <div
@@ -58,41 +54,14 @@ const Peliculas = () => {
         }}
       >
         <div className="hero-content max-center">
-          {/* {appState.repos.videos ? renderTrailer() : null} */}
-          {/* <YouTube
-                      videoId={trailer.key}
-                      
-                    /> */}
+ 
 
-          {/* <YouTube
-            videoId={trailer.key}
-            className={"youtube amru"}
-            containerClassName={"youtube-container amru"}
-            opts={{
-              width: "100%",
-              height: "100%",
-              playerVars: {
-                autoplay: 1,
-                controls: 0,
-                cc_load_policy: 0,
-                fs: 0,
-                iv_load_policy: 0,
-                modestbranding: 0,
-                rel: 0,
-                showinfo: 0,
-              },
-            }}
-          /> */}
-          {/* {trailer ?
-                                            <button className={"button play-video"} onClick={() => setPlaying(true)}
-                                                    type="button">Play
-                                                Trailer</button>
-                                            : 'Sorry, no trailer available'} */}
-          <Button>Play Trailer</Button>
+         
+         
           <h1 className="hero-title">{appState.repos.original_title}</h1>
           {appState.repos.overview ? (
             <p className={"hero-overview"}>{appState.repos.overview}</p>
-          ) : null}
+            ) : null}
         </div>
       </div>
       <Container>
@@ -100,7 +69,8 @@ const Peliculas = () => {
           <NavigationBar />
         </Row>
         <Row>
-          {/*<iframe width="1080" height="600" src={url} frameborder="0"></iframe>*/}
+            <YouTube videoId={trailer.key} className={"youtube amru"} />
+          
         </Row>
 
         <h3 style={{ color: "red" }}>{appState.repos.original_title}</h3>
@@ -124,7 +94,8 @@ const Peliculas = () => {
 
         <Row>
           <Col className="col-3 " xs>
-            <Card.Img src={API_IMG + appState.repos.poster_path} />
+            <Card.Img src={API_IMG + appState.repos.poster_path} className="radius"/>
+            <Button size="lg" href={appState.repos.homepage} target="_blank">asdasd</Button>
           </Col>
 
           <Col className="letra txtleft flex-end">
@@ -158,7 +129,6 @@ const Peliculas = () => {
         </Row>
         <Footer />
 
-        <div className="max-center">{/* {renderMovies()} */}</div>
       </Container>
     </>
   );

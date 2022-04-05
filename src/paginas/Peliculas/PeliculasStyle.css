@@ -65,6 +65,7 @@
     background-size: cover;
     display: flex;
     align-items: flex-end;
+    background-position: 0px;
 }
 
 .hero-content{
@@ -75,4 +76,9 @@
     font-size: 72px;
     margin:0;
 
+}
+
+.radius{
+    border-top-left-radius: 0.5em 1em;
+    border-top-right-radius: 0.5em 1em;
 }
