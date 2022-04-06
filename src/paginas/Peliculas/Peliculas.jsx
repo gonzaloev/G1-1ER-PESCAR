@@ -32,9 +32,7 @@ const Peliculas = () => {
 
   useEffect(() => {
     /* Cargamos los datos de la API. Le asignoamos la url de la API a la variable "apiURL" y a traves de los headers le pasamos los parametros que nos solicita para acceder, ya que la API es privada.*/
-    const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&append_to_response=videos`;
-    console.log(appState.repos);
-    console.log(apiUrl)
+    const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=es-ES&append_to_response=videos&include_videos_language=es-ES`;
 
     fetch(apiUrl)
       .then((res) => res.json()) // devolvemos el JSON
@@ -42,23 +40,11 @@ const Peliculas = () => {
         setAppState({ loading: false, repos: repos }); //Usamos setAppState para cambiar el valor de repos que antes valia null
       });
 
-    
   }, [setAppState]);
 
-  useEffect(() => {
-    const videos = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}&language=es-ES`
-    fetch(videos)
-      .then((res) => res.json()) // devolvemos el JSON
-      .then((videos) => {
-        setAppVideos({ loading: true, videos: videos }); //Usamos setAppState para cambiar el valor de repos que antes valia null
-      });
-  }, [setAppVideos]);
-
-  if (!appState.repos || appState.repos.length === 0 && !appVideos.loading && appVideos.videos != undefined) 
-    return <p>LA PELICULA NO CARGO</p>;
+  if ((!appState.repos || appState.repos.length === 0) && !appVideos.loading) return <p>LA PELICULA NO CARGO</p>;
   
-  const trailer = appVideos.videos.results[0].key;
-  //console.log(appVideos.videos.results[0].key);
+  console.log(appState.repos);
 
  
  
@@ -86,8 +72,8 @@ const Peliculas = () => {
           <NavigationBar />
         </Row>
         <Row>
-            <YouTube videoId={trailer} className={"youtube amru"} />
-          
+{  //         <YouTube videoId={trailer} className={"youtube amru"} />
+}          
         </Row>
 
         <h3 style={{ color: "red" }}>{appState.repos.original_title}</h3>
