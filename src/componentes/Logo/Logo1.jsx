@@ -3,7 +3,7 @@ import logo1 from '../../imgs/M.png';
 
 function Logo1() {
       
-    return <img src={logo1} alt="Logo"/>;
+    return <img src={logo1} alt="Logo"/>
   
 }
 

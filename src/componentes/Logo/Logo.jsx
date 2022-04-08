@@ -5,7 +5,7 @@ function Logo() {
       
     return (
         <div style={{marginTop:"150px"}}>
-            <img src={logo} alt="Logo"/>;
+            <img src={logo} alt="Logo"/>
         </div>
     )
   
