@@ -72,15 +72,16 @@ const Peliculas = () => {
           backgroundImage: `url('${IMAGE_PATH}${appState.repos.backdrop_path}')`,
         }}
       >
+        
         <div className="hero-content max-center">
  
 
          
          
-          <h1 className="hero-title">{appState.repos.original_title}</h1>
-          {appState.repos.overview ? (
+          <h1 className="hero-title" style={{color:'#f2c966', textShadow:" 4px 4px 3px black"}}>{appState.repos.original_title}</h1>
+          {/* {appState.repos.overview ? (
             <p className={"hero-overview"}>{appState.repos.overview}</p>
-            ) : null}
+            ) : null} */}
         </div>
       </div>
         <Row>
@@ -92,7 +93,7 @@ const Peliculas = () => {
           
         </Row>
 
-        <h3 style={{ color: "red" }}>{appState.repos.original_title}</h3>
+        
         <div
           style={{
             color: "white",
@@ -113,18 +114,21 @@ const Peliculas = () => {
 
         <Row>
           
-          <Col className="col-3" xs>
+          <Col className="col-3 " xs>
           <Zoom>
           <div >
             <picture className="image">
-            
-              <Card.Img src={API_IMG + appState.repos.poster_path} className="image__img" />
+            <div className="image__img">
+              <Card.Img src={API_IMG + appState.repos.poster_path} />
               <div className="image__overlay">
-                <div className="image__title">Agrandar</div>
+                <div className="image__title">Agrandar</div>              
               </div>
+            </div>
               
             </picture>
           </div>
+
+          
           </Zoom>
             {/* <Button size="lg" href={appState.repos.homepage} target="_blank" className="btnPlataforma" > hola </Button> */}
           </Col>
@@ -151,9 +155,9 @@ const Peliculas = () => {
               <p>
                 <b>Calificacion:</b> {appState.repos.vote_average}
               </p>
-              <p>
+              {/* <p>
                 <b>Link:</b> {appState.repos.homepage}
-              </p>
+              </p> */}
               <hr />
             </Row>
           </Col>
