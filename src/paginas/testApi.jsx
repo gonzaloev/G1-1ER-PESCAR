@@ -26,7 +26,7 @@ function TestApiList() {
     return (
         <div>
             <MejorRankeadas repos={appState.repos}/> {/* Retornamos el componente mejor ranqueadas y le pasamos por parametro la api*/}
-            <MasVistas repos={appState.repos}/>      {/* Retornamos el componente mas vistas y le pasamos por parametro la api*/}
+            {/* <MasVistas repos={appState.repos}/>    */}   {/* Retornamos el componente mas vistas y le pasamos por parametro la api*/}
         </div>
   );
 }

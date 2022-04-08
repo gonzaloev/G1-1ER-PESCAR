@@ -20,16 +20,16 @@ const MejorRankeadas = (props, poster_path) => {
         <Row className="g-4 justify-content-md-center">
           {repos.results.map((repo) => {
             return (
-              <Card bg="dark"
+              <Card /* bg="dark" */
                 variant="light"
-                style={{ width: "15rem" }}>
+                style={{ width: "15rem", backgroundColor:"#425d7a", marginRight:"20px" }}>
                 <Link to={`/Peliculas/${repo.id}`}>
                   <Card.Img variant="top" src={API_IMG + repo.poster_path} />
                 </Link>
-                <Card.Body>
+                <Card.Body style={{backgroundColor:"#567aa0"}}>
                   <Card.Title>{repo.title}</Card.Title>
                   <Card.Title>{repo.release_date}</Card.Title>
-                  <Card.Text>{repo.vote_average}</Card.Text>
+                  <Card.Text>Puntaje: {repo.vote_average}</Card.Text>
                   {/* <Button variant="primary">Go somewhere</Button> */}
                 </Card.Body>
               </Card>
