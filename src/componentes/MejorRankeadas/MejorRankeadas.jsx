@@ -32,6 +32,7 @@ const MejorRankeadas = (props, poster_path) => {
                   <Card.Text>Puntaje: {repo.vote_average}</Card.Text>
                   {/* <Button variant="primary">Go somewhere</Button> */}
                 </Card.Body>
+ 
               </Card>
             )
           })}
