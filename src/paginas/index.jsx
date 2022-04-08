@@ -9,7 +9,7 @@ function Home() {
   return (
     <>
       <NavigationBar /> {/* Componentes */}
-      <Logo />
+      <Logo style={{marginTop:"150px"}}/>
       <TestApiList />
       <Footer />
     </>

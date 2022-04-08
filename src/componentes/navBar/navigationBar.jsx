@@ -29,6 +29,7 @@ function NavigationBar() {
         bg="dark"
         variant="dark"
         expand="lg"
+        fixed="top"
         style={{ backgroundColor: "#FFD369" }}
         className="sombra"
       >
