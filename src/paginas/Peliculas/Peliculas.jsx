@@ -8,6 +8,8 @@ import "./PeliculasStyle.css";
 import { Link } from "react-router-dom";
 import { Loader } from "../../componentes/Loader/Loader";
 import YouTube from "react-youtube";
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 
 const apiKey = process.env.REACT_APP_API;
 const API_IMG = "https://image.tmdb.org/t/p/w500";
@@ -30,22 +32,35 @@ const Peliculas = () => {
 
   const IMAGE_PATH = "https://image.tmdb.org/t/p/w1280";
 
+  let idiomaTrailer = "es-ES"
+
   useEffect(() => {
     /* Cargamos los datos de la API. Le asignoamos la url de la API a la variable "apiURL" y a traves de los headers le pasamos los parametros que nos solicita para acceder, ya que la API es privada.*/
-    const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=es-ES&append_to_response=videos&include_videos_language=es-ES`;
+    let apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=${idiomaTrailer}&append_to_response=videos&include_videos_language=es-ES&primary_release_year`;
+
+    console.log(apiUrl)
 
     fetch(apiUrl)
       .then((res) => res.json()) // devolvemos el JSON
       .then((repos) => {
         setAppState({ loading: false, repos: repos }); //Usamos setAppState para cambiar el valor de repos que antes valia null
       });
-
+      
   }, [setAppState]);
 
-  if ((!appState.repos || appState.repos.length === 0) && !appVideos.loading) return <p>LA PELICULA NO CARGO</p>;
   
-  console.log(appState.repos);
 
+  if ((!appState.repos || appState.repos.length === 0) && !appVideos.loading) return <p>LA PELICULA NO CARGO</p>;
+  if (!appState.repos.videos.results[0])
+    {
+      
+      idiomaTrailer = "en-EN";
+      
+    }
+    
+  //console.log(appState.repos.videos.results[0])
+  
+  const yearDate = appState.repos.release_date;
  
  
   return (
@@ -72,8 +87,8 @@ const Peliculas = () => {
           <NavigationBar />
         </Row>
         <Row>
-{  //         <YouTube videoId={trailer} className={"youtube amru"} />
-}          
+         {/* <YouTube videoId={appState.repos.videos.results[0].key} className={"youtube amru"} /> */}
+          
         </Row>
 
         <h3 style={{ color: "red" }}>{appState.repos.original_title}</h3>
@@ -96,13 +111,25 @@ const Peliculas = () => {
         </div>
 
         <Row>
-          <Col className="col-3 " xs>
-            <Card.Img src={API_IMG + appState.repos.poster_path} className="radius"/>
-            <Button size="lg" href={appState.repos.homepage} target="_blank">asdasd</Button>
+          
+          <Col className="col-3" xs>
+          <Zoom>
+          <div >
+            <picture className="image">
+            
+              <Card.Img src={API_IMG + appState.repos.poster_path} className="image__img" />
+              <div className="image__overlay">
+                <div className="image__title">Agrandar</div>
+              </div>
+              
+            </picture>
+          </div>
+          </Zoom>
+            {/* <Button size="lg" href={appState.repos.homepage} target="_blank" className="btnPlataforma" > hola </Button> */}
           </Col>
 
           <Col className="letra txtleft flex-end">
-            <h1>{appState.repos.original_title}</h1>
+            <h1>{appState.repos.original_title} ( {yearDate.slice(0,4)} )</h1>
             {/* <h3>Sinopsis</h3> */}
             <p>
               <i>{appState.repos.overview}</i>
