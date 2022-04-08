@@ -6,7 +6,7 @@ import { Container, Row } from "react-bootstrap";
 
 export const Loader = () => {
     return (
-        <Container>
+        <Container style={{marginTop:"150px"}}>
             <NavigationBar />
             <Row className="loader-container">
                 <div class="loader"></div>

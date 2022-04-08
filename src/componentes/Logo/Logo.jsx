@@ -4,7 +4,7 @@ import logo from '../../imgs/logo.png';
 function Logo() {
       
     return (
-        <div style={{marginTop:"150px"}}>
+        <div style={{marginTop:"150px",marginBottom:"30px"}}>
             <img src={logo} alt="Logo"/>
         </div>
     )

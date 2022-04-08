@@ -15,23 +15,19 @@ const MejorRankeadas = (props, poster_path) => {
   
   return (
     <>
-      <h1>Mejor Rankeadas </h1>
-      <Container className="mx-auto my-5 letra ">
+      <Container className=" my-5 letra " style={{backgroundColor:"#222831"}}>
         <Row className="g-4 justify-content-md-center">
           {repos.results.map((repo) => {
             return (
-              <Card /* bg="dark" */
+              <Card  bg="rgb(34, 40, 49)"
                 variant="light"
-                style={{ width: "15rem", backgroundColor:"#425d7a", marginRight:"20px" }}>
+                id="hola">
                 <Link to={`/Peliculas/${repo.id}`}>
-                  <Card.Img variant="top" src={API_IMG + repo.poster_path} />
+                  <Card.Img variant="top" id="custom" src={API_IMG + repo.poster_path} />
                 </Link>
-                <Card.Body style={{backgroundColor:"#567aa0"}}>
-                  <Card.Title>{repo.title}</Card.Title>
-                  <Card.Title>{repo.release_date}</Card.Title>
-                  <Card.Text>Puntaje: {repo.vote_average}</Card.Text>
-                  {/* <Button variant="primary">Go somewhere</Button> */}
-                </Card.Body>
+                  <Card.Title style={{paddingTop:"15px"}}>{repo.title.toUpperCase()}</Card.Title>
+                  <Card.Title>{repo.release_date.slice(0,4)}</Card.Title>
+                  <Card.Text>⭐ {repo.vote_average}</Card.Text>
               </Card>
             )
           })}

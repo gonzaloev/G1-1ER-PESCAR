@@ -20,7 +20,7 @@ const MasVistas = (props) => {
           {repos.results.map((repo) => {
             return (
               <Card
-                bg="rgb(147, 182, 248)"
+                bg="rgb(34, 40, 49)"
                 variant="light"
                 /* style={{ maxWidth: "20rem" }} */ style={{ width: "15rem" }}
                 animation="glow"

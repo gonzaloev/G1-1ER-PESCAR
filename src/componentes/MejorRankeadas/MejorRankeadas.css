@@ -1,11 +1,51 @@
-.bgText{
+.bgText {
     color: white;
     background-color: rgba(94, 94, 121, 0.2);
 }
-.bgText>strong{
+
+.bgText>strong {
     background-color: rgba(94, 94, 121, 0.2);
 }
 
-.letra{
+.letra {
     color: #FFD369;
+}
+
+#hola {
+    width: 300px;
+    background-color: #222831;
+    margin-right: 20px;
+    box-shadow: 0px 0px 8px 1px black;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-bottom-left-radius: 1em 1em;
+    border-bottom-right-radius: 1em 1em;
+    border-top-left-radius: 1em 1em;
+    border-top-right-radius: 1em 1em;
+}
+
+#hola:hover,
+.colorFondo:hover {
+    width: 300px;
+    background-color: #393E46;
+    margin-right: 20px;
+    box-shadow: 0px 0px 8px 1px black;
+    transform: scale(1.05);
+    z-index: 100;
+    -webkit-transition: all 0.3s 0s ease;
+    -moz-transition: all 0.3s 0s ease;
+    -o-transition: all 0.3s 0s ease;
+    transition: all 0.3s 0s ease;
+}
+
+.colorFondo {
+    background-color: #222831;
+}
+
+#custom {
+    border-bottom-left-radius: 2em 2em;
+    border-bottom-right-radius: 2em 2em;
+    border-top-left-radius: 2em 2em;
+    border-top-right-radius: 2em 2em;
+    box-shadow: 0px 0px 8px 1px black;
 }

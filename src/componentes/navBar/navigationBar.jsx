@@ -8,7 +8,6 @@ import { Form } from "react-bootstrap";
 import { FormControl } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { BuscarPelicula } from "../../paginas/Peliculas/BuscarPelicula";
 import Logo1 from "../Logo/Logo1";
 
 function NavigationBar() {
@@ -47,12 +46,10 @@ function NavigationBar() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/">Películas</Nav.Link>
-              <Nav.Link as={Link} to="/series">Series</Nav.Link>
               <NavDropdown
                 title="Género"
                 id="basic-nav-dropdown"
                 variant="dark"
-
               >
                 <NavDropdown.Item as={Link} to={`/generos/28`}>Acción</NavDropdown.Item>
                 <NavDropdown.Item as={Link} to={`/generos/12`}>Aventura</NavDropdown.Item>
@@ -70,7 +67,6 @@ function NavigationBar() {
                 <NavDropdown.Item as={Link} to={`/generos/27`}>Terror</NavDropdown.Item>
                 <NavDropdown.Item as={Link} to={`/generos/36`}>Histora</NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link as={Link} to="/sobreNosotros">Sobre Nosotros</Nav.Link>
             </Nav>
             <Form className="d-flex">
               <FormControl

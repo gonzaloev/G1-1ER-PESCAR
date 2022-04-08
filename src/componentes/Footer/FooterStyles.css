@@ -1,13 +1,12 @@
-.letra{
+.letra {
     color: #FFD369;
 }
 
-.bgc-negro
-background-color {
+.bgc-negro background-color {
     background-color: #212529;
 }
 
-.estilo{
+.estilo {
 
     height: auto;
     width: auto;
@@ -15,37 +14,36 @@ background-color {
     box-shadow: 0px -6px 5px -4px #393E46;
     overflow-y: hidden;
     margin-top: 25px;
+    background: rgb(23, 28, 33);
 
 }
 
-.redes{
+.redes {
     display: flex;
     justify-content: center;
     text-align: justify;
 }
 
-.margen20px{
+.margen20px {
     margin-top: 40px;
     margin-bottom: 40px;
-    color:#EEEEEE
+    color: #EEEEEE
 }
 
-.margenLateral{
-    padding-left: 50px;
-    padding-right: 50px;
+.margenLateral {
+    padding-left: 300px;
+    padding-right: 300px;
 }
 
-a{
+a {
     text-decoration: none;
-    color:#1360e5
+    color: #1360e5
 }
 
-a:hover{
-    color:#FFD369
+a:hover {
+    color: #FFD369
 }
 
 ul {
     list-style: none;
 }
-
-

@@ -5,6 +5,8 @@ import Footer from "../../componentes/Footer/Footer";
 import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { Loader } from '../../componentes/Loader/Loader';
+import Logo from "../../componentes/Logo/Logo";
+import "../Peliculas/PeliculasStyle.css";
 const API_IMG = "https://image.tmdb.org/t/p/w500"
 const apiKey = process.env.REACT_APP_API;
 
@@ -32,22 +34,20 @@ const Genero = () => {
   return (
     <div>
       <NavigationBar />
+      <Logo/>
       <Container>
-       <Row className="g-4">
+       <Row className="g-4 justify-content-md-center">
           {appState.repos.results.map((repo) => {
             return (
-              <Card bg="dark"
+              <Card bg="rgb(34, 40, 49)"
                 variant="light"
-                style={{ width: "15rem" }}>
+                id="hola">
                 <Link to={`/Peliculas/${repo.id}`}>
-                  <Card.Img variant="top" src={API_IMG + repo.poster_path} />
+                  <Card.Img variant="top" id="custom" src={API_IMG + repo.poster_path} />
                 </Link>
-                <Card.Body>
-                  <Card.Title>{repo.title}</Card.Title>
-                  <Card.Title>{repo.release_date}</Card.Title>
-                  <Card.Text>{repo.vote_average}</Card.Text>
-                  {/* <Button variant="primary">Go somewhere</Button> */}
-                </Card.Body>
+                  <Card.Title style={{paddingTop:"15px", color:"rgb(255, 211, 105)"}}>{repo.title}</Card.Title>
+                  <Card.Title style={{color:"rgb(255, 211, 105)"}}>{repo.release_date.slice(0,4)}</Card.Title>
+                  <Card.Text style={{color:"rgb(255, 211, 105)"}}>⭐{repo.vote_average}</Card.Text>
               </Card>
             )
           })}
