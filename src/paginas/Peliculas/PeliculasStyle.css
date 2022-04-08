@@ -1,0 +1,131 @@
+.foto {
+    background-color: dark;
+    width: auto;
+    height: auto;
+}
+
+.acomodar{
+    align-content: flex-end;
+}
+
+.flex-end{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.linea{
+    border: 2px solid aliceblue
+}
+
+.letra{
+    color: #FFD369;
+}
+
+.txtleft {
+    text-align: left;
+}
+
+.txtright {
+    text-align: right;
+}
+
+.txtcenter {
+    text-align: center;
+}
+
+.width50 {
+    width: 50%;
+}
+
+.mgt {
+    margin-top: 60px;
+}
+
+.textarea {
+    justify-content: center;
+    width:50%;
+}
+
+.lista > p{
+    /* margin: -2px;
+    font-size: small; */
+
+}
+
+.max-center{
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.hero{
+    min-height: 500px;
+    background-position: top center;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    background-position: 0px;
+}
+
+.hero-content{
+    max-width: 70%;
+}
+
+.hero-title{
+    font-size: 72px;
+    margin:0;
+
+}
+
+.radius{
+    border-top-left-radius: 0.5em 1em;
+    border-top-right-radius: 0.5em 1em;
+}
+
+.custom{
+    width: 100%;
+    height: 720px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    box-shadow: 0px 0px 8px 1px black;
+
+}
+
+#hola {
+    width: 300px;
+    background-color: #222831;
+    margin-right: 20px;
+    box-shadow: 0px 0px 8px 1px black;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-bottom-left-radius: 1em 1em;
+    border-bottom-right-radius: 1em 1em;
+    border-top-left-radius: 1em 1em;
+    border-top-right-radius: 1em 1em;
+}
+
+#hola:hover{
+    width: 300px;
+    background-color: #393E46;
+    margin-right: 20px;
+    box-shadow: 0px 0px 8px 1px black;
+    transform: scale(1.05);
+    z-index: 100;
+    -webkit-transition: all 0.3s 0s ease;
+    -moz-transition: all 0.3s 0s ease;
+    -o-transition: all 0.3s 0s ease;
+    transition: all 0.3s 0s ease;
+}
+
+#custom {
+    border-bottom-left-radius: 2em 2em;
+    border-bottom-right-radius: 2em 2em;
+    border-top-left-radius: 2em 2em;
+    border-top-right-radius: 2em 2em;
+    box-shadow: 0px 0px 8px 1px black;
+}
+
+.fondoImg{
+    box-shadow: 0px 0px 8px 1px black;
+}
