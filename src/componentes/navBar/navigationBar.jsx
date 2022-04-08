@@ -9,6 +9,7 @@ import { FormControl } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BuscarPelicula } from "../../paginas/Peliculas/BuscarPelicula";
+import Logo1 from "../Logo/Logo1";
 
 function NavigationBar() {
 
@@ -28,9 +29,12 @@ function NavigationBar() {
         bg="dark"
         variant="dark"
         expand="lg"
+        fixed="top"
         style={{ backgroundColor: "#FFD369" }}
+        className="sombra"
       >
-        <Container style={{ marginBottom: '60px' }}>
+        <Container>
+        <Logo1/>
           <Navbar.Brand
             as={Link}
             to="/"
@@ -38,7 +42,6 @@ function NavigationBar() {
 
             style={{ color: "#FFD369" }}
           >
-            Moovies
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -72,13 +75,13 @@ function NavigationBar() {
             <Form className="d-flex">
               <FormControl
                 type="search"
-                placeholder="Buscar"
+                placeholder="Ingrese la pelicula"
                 className="me-2"
                 aria-label="Search"
                 id="buscador"
               />
               <Link to={`/buscarPelicula/${buscarPelicula}`}>
-                <Button id="buscar" variant="primary">Buscar</Button>
+                <Button id="buscar" variant="primary"><em>Buscar</em></Button>
               </Link>
             </Form>
           </Navbar.Collapse>

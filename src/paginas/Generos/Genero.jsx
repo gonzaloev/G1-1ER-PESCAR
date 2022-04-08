@@ -30,9 +30,10 @@ const Genero = () => {
   if (!appState.repos || appState.repos.length === 0 )return <Loader/>;
 
   return (
-    <Container>
+    <div>
       <NavigationBar />
-      <Row className="g-4">
+      <Container>
+       <Row className="g-4">
           {appState.repos.results.map((repo) => {
             return (
               <Card bg="dark"
@@ -51,8 +52,9 @@ const Genero = () => {
             )
           })}
         </Row>
+      </Container>
       <Footer />
-    </Container>
+    </div>
   )
 }
 

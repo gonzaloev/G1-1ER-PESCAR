@@ -16,8 +16,8 @@ const MejorRankeadas = (props, poster_path) => {
   return (
     <>
       <h1>Mejor Rankeadas </h1>
-      <Container className="mx-auto my-5 letra">
-        <Row className="g-4">
+      <Container className="mx-auto my-5 letra ">
+        <Row className="g-4 justify-content-md-center">
           {repos.results.map((repo) => {
             return (
               <Card bg="dark"

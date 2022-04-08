@@ -3,7 +3,11 @@ import logo from '../../imgs/logo.png';
 
 function Logo() {
       
-    return <img src={logo} alt="Logo"/>;
+    return (
+        <div style={{marginTop:"150px"}}>
+            <img src={logo} alt="Logo"/>;
+        </div>
+    )
   
 }
 

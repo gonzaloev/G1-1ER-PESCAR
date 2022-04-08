@@ -14,10 +14,9 @@ const MasVistas = (props) => {
   if (!repos || repos.length === 0) return <Loader/>;
 
   return (
-    <ul>
-      <h1>Más Vistas</h1>
       <Container className="mx-auto my-5 letra">
-        <Row className="g-4">
+              <h1>Más Vistas</h1>
+        <Row className="g-4 justify-content-md-center">
           {repos.results.map((repo) => {
             return (
               <Card
@@ -41,7 +40,6 @@ const MasVistas = (props) => {
           })}
         </Row>
       </Container>
-    </ul>
   );
 };
 

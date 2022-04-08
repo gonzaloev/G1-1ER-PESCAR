@@ -6,6 +6,53 @@ letra{
     color: #fff;
 }
 
+.sombra{
+    box-shadow: 0px 1px 3px 2px #393E46;
+}
+
 .dropdown-item{
     color: #fff;
+}
+
+#buscar{
+
+    background-color: #1b1a1a;
+    border: 1px solid #393E46;
+    width: 110px;
+    border-radius: 30px;
+    height: 40px;
+}
+
+#buscar:hover{
+
+    background-color: #FFD369;
+}
+
+#buscador{
+
+    height: 40px;
+    width: 350px;
+    border-radius: 30px;
+    background-color:none;
+}
+
+#buscador:focus{
+    border: 0px solid white
+}
+
+.d-flex{
+    margin-top: 1%;
+}
+
+.hola{
+    position: relative; 
+    width: 100%; 
+    height: 0; 
+    padding-top: 100.0000%;
+ padding-bottom: 48px; 
+ box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); 
+ margin-top: 1.6em;
+  margin-bottom: 0.9em; 
+  overflow: hidden;
+  will-change: transform;
 }

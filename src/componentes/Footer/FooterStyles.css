@@ -6,3 +6,46 @@
 background-color {
     background-color: #212529;
 }
+
+.estilo{
+
+    height: auto;
+    width: auto;
+    overflow-x: hidden;
+    box-shadow: 0px -6px 5px -4px #393E46;
+    overflow-y: hidden;
+    margin-top: 25px;
+
+}
+
+.redes{
+    display: flex;
+    justify-content: center;
+    text-align: justify;
+}
+
+.margen20px{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    color:#EEEEEE
+}
+
+.margenLateral{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+a{
+    text-decoration: none;
+    color:#1360e5
+}
+
+a:hover{
+    color:#FFD369
+}
+
+ul {
+    list-style: none;
+}
+
+
