@@ -22,6 +22,7 @@ const Peliculas = () => {
     repos: undefined, // Lo iniciamos en null para compararlo mas adelante en un condicional
   });
 
+
   //https://github.com/dom-the-dev/movie-trailer-app/blob/main/src/App.js
 
   const IMAGE_PATH = "https://image.tmdb.org/t/p/w1280";
@@ -65,10 +66,10 @@ const Peliculas = () => {
             ) : null}
         </div>
       </div>
-      <Container>
         <Row>
           <NavigationBar />
         </Row>
+        <Container>
         <Row>
             <YouTube videoId={trailer.key} className={"youtube amru"} />
           
@@ -128,9 +129,8 @@ const Peliculas = () => {
             </Row>
           </Col>
         </Row>
+        </Container>
         <Footer />
-
-      </Container>
     </>
   );
 };

@@ -1,3 +1,7 @@
 .letra{
     color: #FFD369;
 }
+
+.borde{
+    border:  solid 2px #FFD369;
+}
